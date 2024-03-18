@@ -14,7 +14,20 @@ datasource db {
 }
 
 model Restaurant {
-  id      Int      @id @default(autoincrement())
-  name    String
+  id                    Int      @id @default(autoincrement())
+  restaurant_name       String
+  restaurant_image_url  String
+  restaurant_address    String
+  products Product[]
 }
 
+model Product {
+  id                  Int      @id @default(autoincrement())
+  restaurant_id       Int
+  product_name        String
+  product_image_url   String
+  product_price       Decimal
+  product_category    String?
+  active_discount     Boolean
+  restaurant          Restaurant @relation(fields: [restaurant_id], references: [id])
+}
