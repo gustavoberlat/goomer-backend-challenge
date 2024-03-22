@@ -11,7 +11,7 @@ export default class DatabaseService {
     return this.prisma[entityName].findMany();
   }
 
-  async create(entityName: string, data: any) {
+  async createOne(entityName: string, data: any) {
     return this.prisma[entityName].create({ data });
   }
 
